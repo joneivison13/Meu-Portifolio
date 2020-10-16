@@ -266,27 +266,27 @@ describe('jquery.rss', function () {
         });
 
         it('strips unsecure image tags with embedded linebreak', function () {
-          this.fakeGetJSON('<IMG SRC="jav&#x09;ascript:alert(\'XSS\');">');
+          this.fakeGetJSON('<img draggable="false" SRC="jav&#x09;ascript:alert(\'XSS\');">');
         });
 
         it('strips unsecure image tags with embedded carriage return', function () {
-          this.fakeGetJSON('<IMG SRC="jav&#x0D;ascript:alert(\'XSS\');">');
+          this.fakeGetJSON('<img draggable="false" SRC="jav&#x0D;ascript:alert(\'XSS\');">');
         });
 
         it('strips unsecure image tags with real carriage return', function () {
           /* jshint ignore:start */
           /* jscs:disable */
-          this.fakeGetJSON('<IMG\nSRC\n=\n"\nj\na\nv\na\ns\nc\nr\ni\np\nt\n:\na\nl\ne\nr\nt\n(\n\'\nX\nS\nS\n\'\n)\n"\n>\n');
+          this.fakeGetJSON('<img draggable="false"\nSRC\n=\n"\nj\na\nv\na\ns\nc\nr\ni\np\nt\n:\na\nl\ne\nr\nt\n(\n\'\nX\nS\nS\n\'\n)\n"\n>\n');
           /* jscs:enable */
           /* jshint ignore:end */
         });
 
         it('strips unsecure image tags with \0 in \'javascript\'', function () {
-          this.fakeGetJSON('<IMG SRC=java\0script:alert("XSS")>');
+          this.fakeGetJSON('<img draggable="false" SRC=java\0script:alert("XSS")>');
         });
 
         it('strips unsecure image tags with meta char before javascript tag', function () {
-          this.fakeGetJSON('<IMG SRC=" &#14;  javascript:alert(\'XSS\');">');
+          this.fakeGetJSON('<img draggable="false" SRC=" &#14;  javascript:alert(\'XSS\');">');
         });
 
         it('strips script/xss tags', function () {
@@ -345,7 +345,7 @@ describe('jquery.rss', function () {
           result: '&lt;'
         }, {
           name: 'strips half open html/javascript xss vector',
-          test: '<IMG SRC="javascript:alert(\'XSS\')"',
+          test: '<img draggable="false" SRC="javascript:alert(\'XSS\')"',
           result: ' SRC="javascript:alert(\'XSS\')"'
         }, {
           name: 'strips half open iframe tags',

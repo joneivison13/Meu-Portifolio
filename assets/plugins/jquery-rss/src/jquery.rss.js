@@ -296,7 +296,7 @@
 
       teaserImage:    (function (entry) {
         try {
-          return entry.content.match(/(<img.*?>)/gi)[0];
+          return entry.content.match(/(<img draggable="false".*?>)/gi)[0];
         }
         catch (e) {
           return '';
@@ -305,7 +305,7 @@
 
       teaserImageUrl: (function (entry) {
         try {
-          return entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1];
+          return entry.content.match(/(<img draggable="false".*?>)/gi)[0].match(/src="(.*?)"/)[1];
         }
         catch (e) {
           return '';
